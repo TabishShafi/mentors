@@ -10,7 +10,7 @@ const Skilltypes = (props) => {
   const [mentors, setMentors] = useState([])
 
   useEffect(() => {
-    fetch(`/api/skilltypes/${skill}`, {
+    fetch(`http://localhost:5000/api/skilltypes/${skill}`, {
       method: "GET",
     })
       .then((res) => res.json())

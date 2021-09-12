@@ -25,7 +25,7 @@ const sess = {
 };
 app.use(session(sess));
 
-const PORT = 8080;
+const PORT = process.env.PORT || 5000;
 
 app.get("/heartbeat", (req, res) => {
   res.send("Hello!! I am heartbeat Kingsley channel!");

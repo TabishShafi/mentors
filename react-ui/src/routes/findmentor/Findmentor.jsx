@@ -29,7 +29,7 @@ const Findmentor = () => {
       {loadCard ?
         <div style={{ display: "flex", justifyContent: "space-evenly", flexWrap: 'Wrap' }}>
         {cardsArray.map((card) =>
-          <Cards slug={card.slug} title={card.title} description={card.description} setSelectedSkills={setSelectedSkills} setLoadCard={setLoadCard} setSkillTitle={setSkillTitle}/>
+          <Cards key={card.title} slug={card.slug} title={card.title} description={card.description} setSelectedSkills={setSelectedSkills} setLoadCard={setLoadCard} setSkillTitle={setSkillTitle}/>
         )}
       
       </div>

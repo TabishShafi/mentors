@@ -13,7 +13,7 @@ const Mentors = () => {
     }, []);
     const getMentors = () => {
         setIsLoading(true)
-        fetch("/api/mentors")
+        fetch("http://localhost:5000/api/mentors")
         .then(response=>response.json())
         .then(mentors => {
             setMentors(mentors)
@@ -28,7 +28,7 @@ const Mentors = () => {
         <div style= {{display: 'flex', flexWrap: 'wrap', justifyContent:'center'}}>
            {isLoading ? <h1>Loading</h1> : mentors?.map((mentors) => {
             return (
-              <div style= {{textAlign:'center', display: 'flex', justifyContent: 'space-evenly'}}>
+              <div key={mentors.id} style= {{textAlign:'center', display: 'flex', justifyContent: 'space-evenly'}}>
                <Card style={{ width: '230px', margin:'20px' }}>
                <Card.Img variant="top" src="holder.js/100px180" />
                <Card.Body>

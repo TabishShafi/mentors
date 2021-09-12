@@ -14,12 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Mentor.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    type: DataTypes.STRING,
-    skills: DataTypes.STRING,
-    about: DataTypes.TEXT
+      firstName: DataTypes.STRING,
+      lastName: DataTypes.STRING,
+      email: DataTypes.STRING,
+      type: DataTypes.STRING,
+      skills: DataTypes.STRING,
+      about: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Mentor',
