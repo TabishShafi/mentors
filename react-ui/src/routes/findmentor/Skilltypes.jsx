@@ -10,7 +10,7 @@ const Skilltypes = (props) => {
   const [mentors, setMentors] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/skilltypes/${skill}`, {
+    fetch(`/api/skilltypes/${skill}`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -33,8 +33,8 @@ const Skilltypes = (props) => {
 
       mentors?.map((mentors) => {
         return (
-          <>
-          <div style= {{textAlign:'center', display: 'flex', justifyContent: 'space-evenly'}}>
+          <div key={mentors.id}>
+          <div  style= {{textAlign:'center', display: 'flex', justifyContent: 'space-evenly'}}>
            <Card style={{ width: '230px', margin:'20px' }}>
            <Card.Img variant="top" src="holder.js/100px180" />
            <Card.Body>
@@ -44,7 +44,7 @@ const Skilltypes = (props) => {
            </Card.Body>
          </Card>
          </div>
-         </>
+         </div>
         )
        }
       )}

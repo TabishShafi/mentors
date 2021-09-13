@@ -9,7 +9,7 @@ const Profiles = (props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/profiles/${props.match.params.id}`, {
+    fetch(`/api/profiles/${props.match.params.id}`, {
       method: "GET",
     })
       .then((res) => res.json())

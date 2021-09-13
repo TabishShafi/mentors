@@ -54,7 +54,7 @@ const Become = () => {
     const handleSubmit =  async (e) => {
       e.preventDefault();
       console.log("posting")
-      const results = await fetch('http://localhost:5000/api/mentors', {
+      const results = await fetch('/api/mentors', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'

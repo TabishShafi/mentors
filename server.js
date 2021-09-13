@@ -12,19 +12,27 @@ const app = express();
 //                                Middleware
 // ----------------------------------------------------------------------------
 app.use(cors());
-// app.use(express.static("public"));
-app.use(express.static(path.resolve(__dirname + '/react-ui/build')));
+// // app.use(express.static("public"));
+// app.use(express.static(path.resolve(__dirname + '/react-ui/build')));
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-const sess = {
-  secret: "keyboard mouse",
-  cookie: { maxAge: 600000 },
-  id: null,
-};
-app.use(session(sess));
+if (process.env.NODE_ENV === "production")
+{
+  //serve static content
+  // npm run build
 
+  app.use(express.static(path.join(__dirname,"react-ui/build")));
+}
+// app.use(express.urlencoded({ extended: true }));
+
+// const sess = {
+//   secret: "keyboard mouse",
+//   cookie: { maxAge: 600000 },
+//   id: null,
+// };
+// app.use(session(sess));
+ 
 const PORT = process.env.PORT || 5000;
 
 app.get("/heartbeat", (req, res) => {
@@ -75,7 +83,9 @@ app.get("/api/profiles/:id", async (req, res) => {
   res.json(getMentorId);
 });
 
-
+app.get("*", (req,res)=> {
+  res.sendFile(path.join(__dirname,"react-ui/build/index.html"))
+})
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

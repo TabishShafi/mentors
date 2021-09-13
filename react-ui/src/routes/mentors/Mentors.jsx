@@ -13,7 +13,7 @@ const Mentors = () => {
     }, []);
     const getMentors = () => {
         setIsLoading(true)
-        fetch("http://localhost:5000/api/mentors")
+        fetch("/api/mentors")
         .then(response=>response.json())
         .then(mentors => {
             setMentors(mentors)
