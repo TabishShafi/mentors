@@ -8,15 +8,12 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
+const database = process.env.DATABASE_URL || 'postgres';
 
 let sequelize;
- if(process.env.NODE_ENV === "production")
+ if(process.env.DATABASE_URL)
 {
-  sequelize = new Sequelize(process.env.DATABASE_URL,{
-      dialect: "postgres",
-      protocol: "postgres",
-      logging: true //false 
-  });
+  sequelize = new Sequelize(database);
 }
 else {
   sequelize = new Sequelize(config.database, config.username,String(config.password), config);
