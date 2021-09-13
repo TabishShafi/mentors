@@ -15,7 +15,7 @@ if (config.use_env_variable) {
 } 
 else if(process.env.NODE_ENV === "production")
 {
-  const sequelize = new Sequelize(process.env.DATABASE_URL,{
+  sequelize = new Sequelize(process.env.DATABASE_URL,{
       dialect: "postgres",
       protocol: "postgres",
       port: 5432,
