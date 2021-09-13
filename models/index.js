@@ -12,7 +12,18 @@ const db = {};
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
+} 
+else if(process.env.NODE_ENV === "production")
+{
+  const sequelize = new Sequelize(process.env.DATABASE_URL,{
+      dialect: "postgres",
+      protocol: "postgres",
+      port: 5432,
+      host: "<heroku host>",
+      logging: true //false 
+  });
+}
+else {
   sequelize = new Sequelize(config.database, config.username,String(config.password), config);
 }
 
