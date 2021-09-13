@@ -8,7 +8,6 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
-const database = process.env.DATABASE_URL || 'postgres';
 
 let sequelize;
  if(process.env.DATABASE_URL)
@@ -17,7 +16,10 @@ let sequelize;
     dialect: 'postgres',
     protocol: 'postgres',
     dialectOptions: {
-        ssl: true
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
     }
 });
 }
